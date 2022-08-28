@@ -15,3 +15,12 @@ export const FAIL = (res, message) => {
         }
     )
 }
+
+export const APIERROR = (res, message, code) => {
+    return res.status(code).json(
+        {
+            code,
+            error: message ?? "Error interno"
+        }
+    )
+}
