@@ -1,8 +1,6 @@
 const IPAPI_URL = process.env.IPAPI_URL;
-const weatherAPIUrl = process.env.WEATHER_SERVICE_URL
-const weatherAPIKey = process.env.WEATHER_SERVICE_KEY
 
-import { getCurrentWeather, getLocationByIP } from "../services/location";
+import { getCurrentWeather, getLocationByIP, get5daysForecast } from "../services/location.js";
 
 const full_url_with_ip = IPAPI_URL + "200.51.255.3";
 
@@ -41,3 +39,24 @@ describe("Get weather", () => {
         await expect(getCurrentWeather()).rejects.toThrow("services.js (getCurrentWeather): Param query not found")
     })
 });
+
+describe("get forecast", () => {
+
+    test("5 days by location", async () => {
+        const { lon, lat } = await getLocationByIP(full_url_with_ip);
+        const query = lat+","+lon;
+        const response = await get5daysForecast(query);
+        expect(response.forecast).toBeDefined();
+        expect(response.location.country).toBe("Argentina");
+    });
+
+    test("5 days by city", async () => {
+        const response = await get5daysForecast("Manchester");
+        expect(response.forecast).toBeDefined();
+        expect(response.location.country).toBe("United Kingdom");
+    })
+
+    test("throw error if city param is not passed", async () => {
+        await expect(get5daysForecast()).rejects.toThrow("services.js (get5daysForecast): Param query not found")
+    })
+})

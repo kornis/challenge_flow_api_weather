@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import { Api404Error } from "./errors.js";
 
 // Utils
 import { HTTP_CODE_MESSAGES } from "./constants.js";
@@ -38,6 +39,6 @@ export const get = async (url) => {
 
         console.log("ERROR: request.js (get):", error);
 
-        return { error: "ERROR: request.js (get):", error }
+        throw new Api404Error("request.js (get): Error");
     }
 }
