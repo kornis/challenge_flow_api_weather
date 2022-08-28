@@ -14,7 +14,7 @@ export default {
             const response = await getLocationByIP(urlWithDomain);
 
             if(response){
-                Response.OK(res, response.data)
+                Response.OK(res, response)
             } else {
                 Response.APIERROR(res, "Error trying to get location by IP", 400);
             }
