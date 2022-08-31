@@ -7,25 +7,29 @@ API que consulta el clima y la locación actual del usuario.
 
 ## Ejecutar de forma local
 
-Clone the project
+Clonar el proyecto
 
 ```bash
   git clone https://github.com/kornis/challenge_flow_api_weather
 ```
 
-Go to the project directory
+Moverse al directorio del proyecto
 
 ```bash
   cd challenge_flow_api_weather
 ```
 
-Install dependencies
+Cambiarse de rama a release_1
+
+```bash
+  git checkout release_1
+```
+Instalar dependencias
 
 ```bash
   npm install
 ```
-
-Start the server
+Levantar el servidor
 
 ```bash
   npm run dev
@@ -89,4 +93,3 @@ La posición actual del usuario se obtiene mediante la ip de la consulta y esta 
 ## Authors
 
 - Federico Garcia - [@kornis](https://github.com/kornis)
-
