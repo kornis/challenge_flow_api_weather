@@ -1,7 +1,7 @@
-import { getLocationByIP, getCurrentWeather, get5daysForecast } from "../services/location.js";
-import * as Response from "../utils/response.js";
-import { getIPfromClientOrMock } from "../utils/helpers.js";
-import { BaseError } from "../utils/errors.js";
+import { getLocationByIP, getCurrentWeather, get5daysForecast } from "../../services/location.js";
+import * as Response from "../../utils/response.js";
+import { getIPfromClientOrMock } from "../../utils/helpers.js";
+import { BaseError } from "../../utils/errors.js";
 const IPAPI_URL = process.env.IPAPI_URL;
 
 export default {

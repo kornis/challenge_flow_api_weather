@@ -1,4 +1,4 @@
-
+import path from "path";
 /**
  * 
  * @param {Object} request Express request 
@@ -17,4 +17,20 @@ export const getIPfromClientOrMock = (request, ipaipURL) => {
     }
 
     return urlWithDomain;
+}
+
+/**
+ * 
+ * @param {string} modulePath Ruta del módulo a importar (sin aclarar la carpeta src)
+ * 
+ * @returns modulo importado para usar 
+ */
+export const dynamicImport = async (modulePath) => {
+    try {
+        const module = await import("../"+modulePath);
+        return module;
+    } catch(error) {
+        console.error("Error al importar el módulo de la ruta: " + modulePath);
+        console.error(error);
+    }
 }
